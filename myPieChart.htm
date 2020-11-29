@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html style="background: #000">
+	<head>
+		<meta charset="utf-8" />
+		<script src="./myPieChart.js"></script>
+	</head>
+	<body>
+		<p>
+			<script>
+			//#1
+				const chart = PieChart({
+					data: [
+						[666, 'label1', '#006bff'],
+						[1266, 'label1', '#ff5722'],
+						[123, 'label2', '#eee'],
+					],
+				});
+				document.body.appendChild(chart);
+			</script>
+		</p>
+		<p>
+			<script>
+		//#2
+			document.body.appendChild(PieChart({
+				data: [
+					[666, 'label1', '#006bff'],
+					[1266, 'label1', '#ff5722'],
+					[123, 'label2', '#eee'],
+				],
+				format: (value,total,label)=>{
+					const n=(value / total * 100).toFixed(1);
+					const last = n.slice(-1);
+					return (last !=='0' ? n: n.slice(0,-2)) +'%';
+				},
+				size:200
+			}));
+			</script>
+		</p>
+		<p>
+			<script>
+			//#3
+				document.body.appendChild(PieChart({
+					data: [
+						[666, 'label1', '#006bff'],
+						[1266, 'label1', '#ff5722'],
+						[123, 'label2', '#eee'],
+					],
+					format: (value,total,label)=>label,
+					rotate:30,
+					size:80
+				}));
+			</script>
+		</p>
+	</body>
+</html>
